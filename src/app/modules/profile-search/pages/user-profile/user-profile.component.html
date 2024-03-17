@@ -1,3 +1,7 @@
 <div class="h-screen bg-primary-dark">
-  <app-result-card [githubProfile]="githubProfile" />
+  @if(isLoading) {
+    <app-loader />
+  } @else {
+    <app-result-card [githubProfile]="githubProfile" />
+  }
 </div>
