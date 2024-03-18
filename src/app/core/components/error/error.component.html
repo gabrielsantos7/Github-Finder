@@ -1,0 +1,14 @@
+<div class="container border-2 border-teal-400 p-8 rounded-md">
+  <h2 class="text-2xl mb-8 text-red-500 font-bold">{{errorTitle}}</h2>
+    @if (description) {
+      <p class="pb-8 text-lg">{{description}}</p>
+    } @else {
+      <ng-content></ng-content>
+    }
+  <a
+    [routerLink]="['']"
+    class="px-4 py-2 bg-teal-400 rounded-full text-slate-800 font-semibold cursor-pointer hover:bg-teal-600 hover:text-slate-50 duration-500"
+  >
+    Voltar
+  </a>
+</div>

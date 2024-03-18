@@ -58,15 +58,12 @@
   </a>
 </div>
 } @else {
-<h2 class="text-2xl my-8 text-red-500 font-bold">Usuário não encontrado</h2>
-    <p class="pb-8 text-lg">Não conseguimos encontrar nenhum usuário com o nome
+  <app-error errorTitle="Usuário não encontrado" >
+    <p class="text-lg">Não conseguimos encontrar nenhum usuário com o nome
       <span class="text-slate-400 font-semibold">
         {{username}}
-      </span>
+      </span>.
     </p>
-  <a
-    class="px-4 py-2 bg-teal-400 rounded-full text-slate-800 font-semibold cursor-pointer hover:bg-teal-600 hover:text-slate-50 duration-500"
-  >
-    Voltar
-  </a>
+    <p class="pb-8 text-lg">Verifique se o nome que você forneceu está correto e tente novamente.</p>
+  </app-error>
 }
