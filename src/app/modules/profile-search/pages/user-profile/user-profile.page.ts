@@ -9,10 +9,9 @@ import { LoaderComponent } from '../../../../core/components/loader/loader.compo
   selector: 'app-user-profile',
   standalone: true,
   imports: [ResultCardComponent, LoaderComponent],
-  templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+  templateUrl: './user-profile.page.html',
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfilePage implements OnInit {
   private route = inject(ActivatedRoute);
   private service = inject(GithubProfileService);
   isLoading: boolean = true;
