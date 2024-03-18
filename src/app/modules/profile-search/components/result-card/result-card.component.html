@@ -1,5 +1,72 @@
 @if(githubProfile) {
-  <p>{{githubProfile.name}}</p>
+<div
+  class="container w-[800px] max-w-full rounded-lg p-4 bg-secondary-dark flex flex-col items-center justify-center"
+>
+  <img
+    [src]="githubProfile.avatar_url"
+    [alt]="githubProfile.name"
+    class="rounded-full border-4 border-teal-400 size-64"
+  />
+  <h2 class="text-2xl font-bold mt-4">{{githubProfile.name}}</h2>
+  <h3 class="text-xl font-light text-slate-400">
+    {{githubProfile.login}}
+  </h3>
+
+  <div class="flex items-center justify-center gap-8 mt-4">
+    <p>
+      <i class="fa-sharp fa-solid fa-location-dot text-teal-400 mr-2"></i>
+      <span>
+        {{githubProfile.location? githubProfile.location : 'Localização não informada'}}
+      </span>
+    </p>
+    <p>
+      <i class="fa-regular fa-building text-teal-400 mr-2"></i>
+      <span>
+        {{githubProfile.company? githubProfile.company : 'Companhia não informada'}}
+      </span>
+    </p>
+  </div>
+
+  <div class="border-2 border-teal-400 p-4 rounded-md mt-4 relative">
+    <span
+      class="bg-secondary-dark text-teal-400 text-sm absolute -top-3 left-16 px-2"
+    >
+      Bio
+    </span>
+    <p>{{githubProfile.bio}}</p>
+  </div>
+
+  <div>
+    <p class="py-4">
+      <span class="text-slate-400 font-semibold">
+        {{githubProfile.followers}}
+      </span>
+      seguidores
+      <span
+        class="pl-2 ml-1 border-l border-white text-slate-400 font-semibold"
+      >
+        {{githubProfile.following}}
+      </span>
+      seguindo
+    </p>
+  </div>
+
+  <a
+    class="px-4 py-2 bg-teal-400 rounded-full text-slate-800 font-semibold cursor-pointer hover:bg-teal-600 hover:text-slate-50 duration-500"
+  >
+    Ver repositórios
+  </a>
+</div>
 } @else {
-  <p>User not found</p>
+<h2 class="text-2xl my-8 text-red-500 font-bold">Usuário não encontrado</h2>
+    <p class="pb-8 text-lg">Não conseguimos encontrar nenhum usuário com o nome
+      <span class="text-slate-400 font-semibold">
+        {{username}}
+      </span>
+    </p>
+  <a
+    class="px-4 py-2 bg-teal-400 rounded-full text-slate-800 font-semibold cursor-pointer hover:bg-teal-600 hover:text-slate-50 duration-500"
+  >
+    Voltar
+  </a>
 }

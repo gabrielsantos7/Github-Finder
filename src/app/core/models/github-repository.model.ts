@@ -1,7 +1,7 @@
 export interface GithubRepository {
   name: string;
-  htmlUrl: string;
+  html_url: string;
   language: string;
-  stargazersCount: number;
-  forksCount: number;
+  stargazers_count: number;
+  forks_count: number;
 };

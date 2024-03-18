@@ -1,17 +1,16 @@
 export interface GithubProfile {
   id: number;
   login: string;
-  avatarUrl: string;
+  avatar_url: string;
   name: string;
   company: string;
-  blog: string;
   location: string;
   email: string;
   bio: string;
-  publicRepos: number;
-  publicGists: number;
+  public_repos: number;
+  public_gists: number;
   followers: number;
   following: number;
-  createdAt: Date;
-  updatedAt: Date;
+  created_at: Date;
+  updated_at: Date;
 }

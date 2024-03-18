@@ -1,7 +1,10 @@
-<div class="h-screen bg-primary-dark">
+<div class="h-screen bg-primary-dark flex items-center justify-center">
   @if(isLoading) {
     <app-loader />
   } @else {
-    <app-result-card [githubProfile]="githubProfile" />
+    <app-result-card
+      [username]="username"
+      [githubProfile]="githubProfile" 
+    />
   }
 </div>

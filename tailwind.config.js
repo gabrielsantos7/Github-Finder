@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
       container: {
@@ -14,9 +12,11 @@ module.exports = {
       },
       backgroundImage: {
         'main-wpp': "url('assets/images/wallpaper.webp')"
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif']
       }
     }
   },
-  plugins: [],
-}
-
+  plugins: []
+};

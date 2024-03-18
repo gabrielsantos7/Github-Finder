@@ -15,8 +15,9 @@ import { LoaderComponent } from '../../../../core/components/loader/loader.compo
 export class UserProfileComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private service = inject(GithubProfileService);
-  isLoading = true;
+  isLoading: boolean = true;
   username: string = '';
+  errorMsg: string = '';
   githubProfile: GithubProfile | null = null;
 
   ngOnInit(): void {
@@ -24,11 +25,12 @@ export class UserProfileComponent implements OnInit {
     this.service.searchProfile(this.username).subscribe({
       next: (user) => {
         this.githubProfile = user;
+        this.isLoading = false;
       },
       error: (err) => {
-        console.error(err);
+        console.error(err.status);
+        this.isLoading = false
       },
-      complete: () => this.isLoading = false
     });
   }
 }
