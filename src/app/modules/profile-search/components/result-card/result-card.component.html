@@ -33,7 +33,7 @@
     >
       Bio
     </span>
-    <p>{{githubProfile.bio}}</p>
+    <p>{{githubProfile.bio ? githubProfile.bio : 'O usuário não possui uma bio.'}}</p>
   </div>
 
   <div>
@@ -52,6 +52,7 @@
   </div>
 
   <a
+    [routerLink]="['/users', username, 'repos' ]"
     class="px-4 py-2 bg-teal-400 rounded-full text-slate-800 font-semibold cursor-pointer hover:bg-teal-600 hover:text-slate-50 duration-500"
   >
     Ver repositórios

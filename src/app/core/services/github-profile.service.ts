@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { GithubProfile } from '../models/github-profile.model';
 import { environment } from '../../../environments/environment';
+import { GithubRepository } from '../models/github-repository.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,11 @@ export class GithubProfileService {
 
   constructor() {}
 
-  searchProfile(userName: string): Observable<GithubProfile> {
-    return this.http.get<GithubProfile>(`${this.apiUrl}/${userName}`);
+  searchProfile(username: string): Observable<GithubProfile> {
+    return this.http.get<GithubProfile>(`${this.apiUrl}/${username}`);
+  }
+
+  searchRepos(username: string): Observable<GithubRepository[]> {
+    return this.http.get<GithubRepository[]>(`${this.apiUrl}/${username}/repos`);
   }
 }
