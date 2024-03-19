@@ -1,0 +1,9 @@
+<div class="p-4 rounded-md border-2 border-white my-4">
+  <h3 class="text-lg font-semibold pb-2">
+    {{repository.name}}
+  </h3>
+  <div class="flex justify-center items-center gap-8">
+    <app-repo-stats type="star" [count]="repository.stargazers_count" />
+    <app-repo-stats type="fork" [count]="repository.forks_count" />
+  </div>
+</div>

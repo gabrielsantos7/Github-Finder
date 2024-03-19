@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { ReposComponent } from '../../components/repos/repos.component';
 import { ActivatedRoute } from '@angular/router';
 import { GithubProfileService } from '../../../../core/services/github-profile.service';
 import { GithubRepository } from '../../../../core/models/github-repository.model';
 import { LoaderComponent } from '../../../../core/components/loader/loader.component';
 import { ErrorComponent } from '../../../../core/components/error/error.component';
+import { RepositoryComponent } from '../../components/repository/repository.component';
 
 @Component({
   selector: 'app-user-repos',
   standalone: true,
-  imports: [ReposComponent, LoaderComponent, ErrorComponent],
+  imports: [LoaderComponent, ErrorComponent, RepositoryComponent],
   templateUrl: './user-repos.page.html',
 })
 export class UserReposPage {
@@ -28,8 +28,7 @@ export class UserReposPage {
         this.isLoading = false;
         this.filteredRepos = this.repos.sort((a, b) => {
           return b.stargazers_count - a.stargazers_count;
-        }).slice(0, 7);
-        console.log(this.filteredRepos)        
+        }).slice(0, 6);        
       },
       error: (err) => {
         if(err.status === 404) {

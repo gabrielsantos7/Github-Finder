@@ -1,4 +1,4 @@
-<div class="h-screen bg-primary-dark flex items-center justify-center">
+<div class="min-h-screen bg-primary-dark flex items-center justify-center">
   @if(isLoading) {
     <app-loader />
   } @else if(errorMsg) {
@@ -15,6 +15,13 @@
       }
     </app-error>
   } @else {
-    <p>all right</p>
+    <div class="container w-[800px] max-w-full rounded-lg p-4">
+      <h2 class="text-xl font-bold text-center pb-4">Repositórios de <span class="text-slate-400 font-bold">
+        {{username}}
+      </span></h2>
+      @for(repo of filteredRepos; track repo.name) {
+        <app-repository [repository]="repo" />
+      }
+    </div>
   }
 </div>
