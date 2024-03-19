@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GithubProfile } from '../../../../core/models/github-profile.model';
 import { RouterLink } from '@angular/router';
-import { ErrorComponent } from '../../../../core/components/error/error.component';
+import { ErrorComponent } from '../../../../shared/components/error/error.component';
 
 @Component({
   selector: 'app-result-card',
