@@ -2,7 +2,7 @@
   (submit)="onSubmit($event)"
   [ngClass]="{'border-gray-300' : !errorMsg}"
   [ngClass]="{'border-red-400' : errorMsg}"
-  class="p-12 mt-8 border-2 rounded-md bg-gray-300/10 w-[600px] max-w-[95%] flex justify-evenly items-center"
+  class="p-4 md:p-12 mt-8 container border-2 rounded-md bg-gray-300/10 flex justify-evenly items-center w-80 md:w-[600px]"
 >
   <div class="flex justify-center items-center">
     <div>
@@ -11,7 +11,7 @@
         [ngClass]="{'border-gray-300' : !errorMsg}"
         [ngClass]="{'border-red-400' : errorMsg}"
         type="search"
-        class="p-2 outline-none border-b focus:border-teal-400 bg-transparent w-72 duration-300"
+        class="p-2 outline-none border-b focus:border-teal-400 bg-transparent w-52 md:w-72 duration-300"
         name="userName"
         id="userName"
         placeholder="Pesquisar usuário..."
