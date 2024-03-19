@@ -22,25 +22,19 @@
       <a [routerLink]="['/users', username]" class="text-slate-400 font-bold hover:text-teal-400 hover:underline duration-300">{{username}}</a>
       • {{repos.length}} repositórios
     </h2>
-    <div></div>
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       @for(repo of filteredRepos; track repo.name) {
-      <app-repository [repository]="repo" />
+        <app-repository [repository]="repo" />
       }
     </div>
     <div class="my-8 flex items-center justify-center">
-      @if(filteredRepos.length === repos.length) {
-      <button (click)="backToTop()" class="px-8 py-3 bg-white text-black font-medium rounded-sm hover:bg-slate-300 duration-200 hover:scale-105">
-        Voltar para o topo
-      </button>
-      } @else {
       <button
-        (click)="loadMoreRepos()"
-        class="px-8 py-3 bg-white text-black font-medium rounded-sm hover:bg-slate-300 duration-200 hover:scale-105"
-      >
-        Carregar mais repositórios
+        (click)="filteredRepos.length === repos.length?
+          backToTop() : loadMoreRepos()"
+        class="ghost-btn px-8 py-3 rounded-sm">
+        {{filteredRepos.length === repos.length? 'Voltar para o topo' : 'Carregar mais repositórios' }}
       </button>
-      }
     </div>
   </div>
   }

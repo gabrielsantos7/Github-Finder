@@ -1,7 +1,13 @@
-<div class="py-4 px-8 rounded-md border-2 bg-secondary-dark border-slate-300 hover:border-teal-400 duration-1000">
+<div class="py-4 px-8 rounded-md border-2 bg-secondary-dark border-slate-500 hover:border-teal-400 duration-1000">
   <h3 class="text-lg font-semibold text-teal-400">
     {{repository.name}}
   </h3>
+
+
+  <div class="flex justify-start items-center gap-4 my-4">
+    <app-repo-stats type="star" [count]="repository.stargazers_count" />
+    <app-repo-stats type="fork" [count]="repository.forks_count" />
+  </div>
 
   @if(repository.description) {
   <p class="py-1">
@@ -15,10 +21,6 @@
     <i class="fa-solid fa-code"></i>
     <span class="pl-2">{{repository.language}}</span>
   </p>
-  <div class="flex justify-start items-center gap-4 my-4">
-    <app-repo-stats type="star" [count]="repository.stargazers_count" />
-    <app-repo-stats type="fork" [count]="repository.forks_count" />
-  </div>
 
   <div class="my-4 flex items-center justify-start gap-4">
     <a
@@ -35,10 +37,10 @@
       [href]="repository.homepage"
       target="_blank"
       rel="noopener"
-      class="link-btn"
+      class="ghost-btn px-4 py-2 rounded-full"
     >
       <i class="fa-solid fa-earth-americas pr-1 text-lg"></i>
-      Acessar site
+      Visitar site
     </a>
     }
   </div>

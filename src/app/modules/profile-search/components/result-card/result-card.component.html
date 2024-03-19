@@ -2,11 +2,13 @@
 <div
   class="container w-[800px] max-w-full rounded-lg p-4 bg-secondary-dark flex flex-col items-center justify-center"
 >
-  <img
-    [src]="githubProfile.avatar_url"
-    [alt]="githubProfile.name"
-    class="rounded-full border-4 border-teal-400 size-64"
-  />
+  <a [href]="githubProfile.html_url" target="_blank" rel="noopener noreferrer">
+    <img
+      [src]="githubProfile.avatar_url"
+      [alt]="githubProfile.name"
+      class="rounded-full border-4 border-slate-500 hover:border-teal-400 size-64 duration-300"
+    />
+  </a>
   <h2 class="text-2xl font-bold mt-4">{{githubProfile.name}}</h2>
   <h3 class="text-xl font-light text-slate-400">
     {{githubProfile.login}}
@@ -33,7 +35,9 @@
     >
       Bio
     </span>
-    <p>{{githubProfile.bio ? githubProfile.bio : 'O usuário não possui uma bio.'}}</p>
+    <p>
+      {{githubProfile.bio ? githubProfile.bio : 'O usuário não possui uma bio.'}}
+    </p>
   </div>
 
   <div>
@@ -51,20 +55,24 @@
     </p>
   </div>
 
-    <a
-    [routerLink]="['/users', username, 'repos' ]"
-    class="link-btn"
-  >
-    Ver repositórios
-  </a>
+  <div class="flex items-center justify-center gap-4">
+    <a [routerLink]="['']" class="ghost-btn px-8 py-2 rounded-full">Voltar</a>
+    <a [routerLink]="['/users', username, 'repos' ]" class="link-btn">
+      Ver repositórios
+    </a>
+  </div>
 </div>
 } @else {
-  <app-error errorTitle="Usuário não encontrado" >
-    <p class="text-lg">Não conseguimos encontrar nenhum usuário com o nome
-      <span class="text-slate-400 font-semibold">
-        {{username}}
-      </span>.
-    </p>
-    <p class="pb-8 text-lg">Verifique se o nome que você forneceu está correto e tente novamente.</p>
-  </app-error>
+<app-error errorTitle="Usuário não encontrado">
+  <p class="text-lg">
+    Não conseguimos encontrar nenhum usuário com o nome
+    <span class="text-slate-400 font-semibold">
+      {{username}}
+    </span>
+    .
+  </p>
+  <p class="pb-8 text-lg">
+    Verifique se o nome que você forneceu está correto e tente novamente.
+  </p>
+</app-error>
 }
