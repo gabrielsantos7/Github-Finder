@@ -1,27 +1,47 @@
 <div class="min-h-screen bg-primary-dark flex items-center justify-center">
   @if(isLoading) {
-    <app-loader />
+  <app-loader />
   } @else if(errorMsg) {
-    <app-error errorTitle="errorMsg" >
-      @if(errorMsg === 'Usuário não encontrado') {
-        <p class="text-lg">Não conseguimos encontrar nenhum usuário com o nome
-          <span class="text-slate-400 font-semibold">
-            {{username}}
-          </span>.
-        </p>
-        <p class="pb-8 text-lg">Verifique se o nome que você forneceu está correto e tente novamente.</p>
-      } @else {
-        <p class="pb-8 text-lg">Ocorreu um erro desconhecido.</p>
-      }
-    </app-error>
+  <app-error errorTitle="errorMsg">
+    @if(errorMsg === 'Usuário não encontrado') {
+    <p class="text-lg">
+      Não conseguimos encontrar nenhum usuário com o nome
+      <span class="text-slate-400 font-semibold">{{username}}</span>
+      .
+    </p>
+    <p class="pb-8 text-lg">
+      Verifique se o nome que você forneceu está correto e tente novamente.
+    </p>
+    } @else {
+    <p class="pb-8 text-lg">Ocorreu um erro desconhecido.</p>
+    }
+  </app-error>
   } @else {
-    <div class="container w-[800px] max-w-full rounded-lg p-4">
-      <h2 class="text-xl font-bold text-center pb-4">Repositórios de <span class="text-slate-400 font-bold">
-        {{username}}
-      </span></h2>
+  <div class="container w-full rounded-lg p-4">
+    <h2 class="text-xl font-bold text-center pt-4 pb-8">
+      <a [routerLink]="['/users', username]" class="text-slate-400 font-bold hover:text-teal-400 hover:underline duration-300">{{username}}</a>
+      • {{repos.length}} repositórios
+    </h2>
+    <div></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       @for(repo of filteredRepos; track repo.name) {
-        <app-repository [repository]="repo" />
+      <app-repository [repository]="repo" />
       }
     </div>
+    <div class="my-8 flex items-center justify-center">
+      @if(filteredRepos.length === repos.length) {
+      <button (click)="backToTop()" class="px-8 py-3 bg-white text-black font-medium rounded-sm hover:bg-slate-300 duration-200 hover:scale-105">
+        Voltar para o topo
+      </button>
+      } @else {
+      <button
+        (click)="loadMoreRepos()"
+        class="px-8 py-3 bg-white text-black font-medium rounded-sm hover:bg-slate-300 duration-200 hover:scale-105"
+      >
+        Carregar mais repositórios
+      </button>
+      }
+    </div>
+  </div>
   }
 </div>

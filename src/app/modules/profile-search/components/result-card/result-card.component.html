@@ -14,13 +14,13 @@
 
   <div class="flex items-center justify-center gap-8 mt-4">
     <p>
-      <i class="fa-sharp fa-solid fa-location-dot text-teal-400 mr-2"></i>
+      <i class="fa-sharp fa-solid fa-location-dot text-teal-400 mr-1"></i>
       <span>
         {{githubProfile.location? githubProfile.location : 'Localização não informada'}}
       </span>
     </p>
     <p>
-      <i class="fa-regular fa-building text-teal-400 mr-2"></i>
+      <i class="fa-regular fa-building text-teal-400 mr-1"></i>
       <span>
         {{githubProfile.company? githubProfile.company : 'Companhia não informada'}}
       </span>
@@ -51,9 +51,9 @@
     </p>
   </div>
 
-  <a
+    <a
     [routerLink]="['/users', username, 'repos' ]"
-    class="px-4 py-2 bg-teal-400 rounded-full text-slate-800 font-semibold cursor-pointer hover:bg-teal-600 hover:text-slate-50 duration-500"
+    class="link-btn"
   >
     Ver repositórios
   </a>
