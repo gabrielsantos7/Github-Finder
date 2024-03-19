@@ -1,10 +1,28 @@
 <div class="h-screen bg-primary-dark flex items-center justify-center">
   @if(isLoading) {
     <app-loader />
+  } @else if(errorTitle === 'Usuário não encontrado') {
+    <app-error [errorTitle]="errorTitle">
+      <p class="text-lg">
+        O usuário
+        <span class="text-slate-400 font-semibold">
+          {{username}}
+        </span>
+        não foi encontrado no GitHub.
+      </p>
+      <p class="pb-8 text-lg">
+        Verifique se o nome que você forneceu está correto e tente novamente.
+      </p>
+    </app-error>
+  } @else if (errorTitle) {
+    <app-error
+      [errorTitle]="errorTitle"
+      [description]="errorDescription"
+    />
   } @else {
     <app-result-card
       [username]="username"
-      [githubProfile]="githubProfile" 
+      [githubProfile]="githubProfile"
     />
   }
 </div>

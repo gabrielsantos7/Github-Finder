@@ -19,7 +19,8 @@ export class UserReposPage {
   filteredRepos: GithubRepository[] = [];
   username: string = '';
   isLoading: boolean = true;
-  errorMsg: string = '';
+  errorTitle: string = '';
+  errorDescription: string = '';
   numberOfRepos: number = 6;
   ngOnInit(): void {
     this.username = this.route.snapshot.params['username'];
@@ -34,10 +35,14 @@ export class UserReposPage {
           .slice(0, this.numberOfRepos);
       },
       error: (err) => {
-        if (err.status === 404) {
-          this.errorMsg = 'Usuário não encontrado';
+        if (err.status === 403) {
+          this.errorTitle = 'Limite de requisições atingido';
+          this.errorDescription = 'Você atingiu o número máximo de requisições à API do GitHub. Por favor, tente novamente mais tarde.';
+        } else if(err.status === 404) {
+          this.errorTitle = 'Usuário não encontrado';
         } else {
-          this.errorMsg = err.error.message;
+          this.errorTitle = 'Erro desconhecido';
+          this.errorDescription = err.error.message || 'Ocorreu um erro desconhecido. Por favor, tente novamente mais tarde.';
         }
         this.isLoading = false;
       }
