@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { SearchCardComponent } from '../../components/search-card/search-card.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-user-search',
   standalone: true,
   imports: [SearchCardComponent],
-  templateUrl: './home.page.html'
+  templateUrl: './user-search.page.html'
 })
-export class HomePage {
+export class UserSearchPage {
 
 }
