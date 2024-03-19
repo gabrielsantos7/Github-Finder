@@ -1,21 +1,30 @@
 <form
   (submit)="onSubmit($event)"
-  class="p-12 mt-8 border-2 border-gray-300 rounded-md bg-gray-300/10 w-[600px] max-w-[95%] flex justify-evenly items-center"
+  [ngClass]="{'border-gray-300' : !errorMsg}"
+  [ngClass]="{'border-red-400' : errorMsg}"
+  class="p-12 mt-8 border-2 rounded-md bg-gray-300/10 w-[600px] max-w-[95%] flex justify-evenly items-center"
 >
   <div class="flex justify-center items-center">
-    <input
-      [(ngModel)]="userName"
-      type="search"
-      class="p-2 outline-none border-b border-gray-300 focus:border-teal-400 bg-transparent w-72 duration-300"
-      name="userName"
-      id="userName"
-      placeholder="Pesquisar usuário..."
-    />
+    <div>
+      <input
+        [(ngModel)]="userName"
+        [ngClass]="{'border-gray-300' : !errorMsg}"
+        [ngClass]="{'border-red-400' : errorMsg}"
+        type="search"
+        class="p-2 outline-none border-b focus:border-teal-400 bg-transparent w-72 duration-300"
+        name="userName"
+        id="userName"
+        placeholder="Pesquisar usuário..."
+      />
+      @if(errorMsg) {
+      <p class="pt-1 text-red-400">{{errorMsg}}</p>
+      }
+    </div>
   </div>
   <button
     class="py-2 px-3 rounded-full ring-1 ring-gray-300 hover:ring-teal-400 hover:bg-teal-400 duration-300 font-medium"
     type="submit"
   >
-  <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 </form>
