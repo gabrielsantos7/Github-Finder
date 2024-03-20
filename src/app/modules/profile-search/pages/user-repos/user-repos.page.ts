@@ -5,11 +5,20 @@ import { GithubRepository } from '../../../../core/models/github-repository.mode
 import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
 import { ErrorComponent } from '../../../../shared/components/error/error.component';
 import { RepositoryComponent } from '../../components/repository/repository.component';
+import { FormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-user-repos',
   standalone: true,
-  imports: [LoaderComponent, ErrorComponent, RepositoryComponent, RouterLink],
+  imports: [
+    FormsModule,
+    NgClass,
+    RouterLink,
+    RepositoryComponent,
+    LoaderComponent,
+    ErrorComponent
+  ],
   templateUrl: './user-repos.page.html'
 })
 export class UserReposPage {
@@ -22,6 +31,7 @@ export class UserReposPage {
   errorTitle: string = '';
   errorDescription: string = '';
   numberOfRepos: number = 6;
+  repoName: string = '';
   ngOnInit(): void {
     this.username = this.route.snapshot.params['username'];
     this.service.searchRepos(this.username).subscribe({
@@ -37,12 +47,15 @@ export class UserReposPage {
       error: (err) => {
         if (err.status === 403) {
           this.errorTitle = 'Limite de requisições atingido';
-          this.errorDescription = 'Você atingiu o número máximo de requisições à API do GitHub. Por favor, tente novamente mais tarde.';
-        } else if(err.status === 404) {
+          this.errorDescription =
+            'Você atingiu o número máximo de requisições à API do GitHub. Por favor, tente novamente mais tarde.';
+        } else if (err.status === 404) {
           this.errorTitle = 'Usuário não encontrado';
         } else {
           this.errorTitle = 'Erro desconhecido';
-          this.errorDescription = err.error.message || 'Ocorreu um erro desconhecido. Por favor, tente novamente mais tarde.';
+          this.errorDescription =
+            err.error.message ||
+            'Ocorreu um erro desconhecido. Por favor, tente novamente mais tarde.';
         }
         this.isLoading = false;
       }
@@ -56,6 +69,24 @@ export class UserReposPage {
         return b.stargazers_count - a.stargazers_count;
       })
       .slice(0, this.numberOfRepos);
+  }
+
+  filterRepos() {
+    if (this.repoName) {
+      this.filteredRepos = this.repos
+        .sort((a, b) => {
+          return b.stargazers_count - a.stargazers_count;
+        })
+        .filter((repo) =>
+          repo.name.toLowerCase().includes(this.repoName.toLowerCase())
+        );
+    } else {
+      this.filteredRepos = this.repos
+        .sort((a, b) => {
+          return b.stargazers_count - a.stargazers_count;
+        })
+        .slice(0, this.numberOfRepos);
+    }
   }
 
   backToTop() {

@@ -1,45 +1,89 @@
 <div class="min-h-screen bg-primary-dark flex items-center justify-center">
   @if(isLoading) {
-    <app-loader />
+  <app-loader />
   } @else if(errorTitle === 'Usuário não encontrado') {
-    <app-error [errorTitle]="errorTitle">
-      <p class="text-lg">
-        Não conseguimos encontrar nenhum usuário com o nome
-        <span class="text-slate-400 font-semibold">{{username}}</span>.
-      </p>
-      <p class="pb-8 text-lg">
-        Verifique se o nome que você forneceu está correto e tente novamente.
-      </p>
-    </app-error>
+  <app-error [errorTitle]="errorTitle">
+    <p class="text-lg">
+      Não conseguimos encontrar nenhum usuário com o nome
+      <span class="text-slate-400 font-semibold">{{username}}</span>
+      .
+    </p>
+    <p class="pb-8 text-lg">
+      Verifique se o nome que você forneceu está correto e tente novamente.
+    </p>
+  </app-error>
   } @else if(errorTitle) {
-    <app-error
-    [errorTitle]="errorTitle"
-    [description]="errorDescription"
-    />
+  <app-error [errorTitle]="errorTitle" [description]="errorDescription" />
   } @else {
-    <div class="container w-full rounded-lg p-4">
-      <h2 class="text-xl font-bold text-center pt-4 pb-8">
-        <a [routerLink]="['/users', username]" class="text-slate-400 font-bold hover:text-teal-400 hover:underline duration-300">{{username}}</a>
+  <div class="container w-full rounded-lg p-4">
+    <div class="flex items-center justify-between flex-col md:flex-row py-8">
+      <h2 class="text-xl font-bold text-center pb-4">
+        <a
+          [routerLink]="['/users', username]"
+          class="text-slate-400 font-bold hover:text-teal-400 hover:underline duration-300"
+        >
+          {{username}}
+        </a>
         • {{repos.length}} repositórios
       </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        @for(repo of filteredRepos; track repo.name) {
-          <app-repository [repository]="repo" />
-        }
-      </div>
-      <div class="my-8 flex items-center justify-center flex-col">
-        <button
-          (click)="filteredRepos.length === repos.length?
-            backToTop() : loadMoreRepos()"
-          class="ghost-btn px-8 py-3 rounded-sm">
-          {{filteredRepos.length === repos.length? 'Voltar para o topo' : 'Carregar mais repositórios' }}
-        </button>
-        <div class="text-center pt-8 flex items-center justify-center gap-2">
-          <span class="flex items-center justify-center size-4 ring-1 ring-white rounded-full text-sm">?</span>
-          <small class="block">Para voltar para a página do perfil, clique no nome de usuário no topo da página.</small>
-        </div>
+      <div
+        class="py-2 px-4 ring-1 md:ring-2 ring-slate-400 focus-within:ring-teal-400 duration-500 rounded-full"
+      >
+        <i class="fa-solid fa-magnifying-glass pr-3"></i>
+        <input
+          [(ngModel)]="repoName"
+          (ngModelChange)="filterRepos()"
+          type="search"
+          class="bg-transparent w-72 outline-none peer"
+          name="userName"
+          id="userName"
+          placeholder="Pesquisar repositório..."
+        />
       </div>
     </div>
+
+    <div
+      [ngClass]="{'lg:grid-cols-2': filteredRepos.length > 0}"
+      class="grid grid-cols-1 gap-8"
+    >
+      @for(repo of filteredRepos; track repo.name) {
+      <app-repository [repository]="repo" />
+      } @empty {
+      <div class="container p-8 md:p-48">
+        <h2 class="text-teal-500 text-2xl font-bold mb-4 text-center">
+          Nenhum repositório encontrado
+        </h2>
+        <p class="md:text-center">
+          Não conseguimos encontrar nenhum repositório com o nome
+          <span class="text-slate-400 font-bold">{{repoName}}</span>
+          .
+        </p>
+        <p class="md:text-center">
+          Por favor, verifique se o nome do repositório está correto ou tente
+          outra busca.
+        </p>
+      </div>
+      }
+    </div>
+    @if(filteredRepos.length > 0 && !repoName) {
+    <div class="my-8 flex items-center justify-center flex-col">
+      <button
+        (click)="filteredRepos.length === repos.length?
+              backToTop() : loadMoreRepos()"
+        class="ghost-btn px-8 py-3 rounded-sm"
+      >
+        {{filteredRepos.length === repos.length? 'Voltar para o topo' :
+        'Carregar mais repositórios' }}
+      </button>
+      <div class="text-center pt-8 flex items-center justify-center gap-2">
+        <small>
+          Para voltar para a página do perfil, clique no nome de usuário no topo
+          da página.
+        </small>
+      </div>
+    </div>
+    }
+  </div>
   }
 </div>
