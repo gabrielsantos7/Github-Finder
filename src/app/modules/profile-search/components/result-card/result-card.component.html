@@ -1,11 +1,11 @@
 <div
-  class="container w-[800px] max-w-full rounded-lg p-4 bg-secondary-dark flex flex-col items-center justify-center"
+  class="container lg:w-[800px] md:rounded-lg p-8 lg:p-4 bg-secondary-dark flex flex-col items-center justify-center"
 >
   <a [href]="githubProfile.html_url" target="_blank" rel="noopener noreferrer">
     <img
       [src]="githubProfile.avatar_url"
       [alt]="githubProfile.name"
-      class="rounded-full border-4 border-slate-500 hover:border-teal-400 size-64 duration-300"
+      class="rounded-full border-4 border-slate-500 hover:border-teal-400 size-44 md:size-64 duration-300"
     />
   </a>
   <h2 class="text-2xl font-bold mt-4">{{githubProfile.name}}</h2>
@@ -13,7 +13,9 @@
     {{githubProfile.login}}
   </h3>
 
-  <div class="flex items-center justify-center gap-8 mt-4">
+  <div
+    class="flex items-center justify-center gap-2 md:gap-8 mt-4 flex-col md:flex-row"
+  >
     <p class="text-center">
       <i class="fa-sharp fa-solid fa-location-dot text-teal-400 mr-1"></i>
       <span>
@@ -28,7 +30,9 @@
     </p>
   </div>
 
-  <div class="border-2 border-teal-400 p-4 rounded-md mt-4 relative">
+  <div
+    class="border-2 border-teal-400 p-4 rounded-md mt-4 relative max-w-full"
+  >
     <span
       class="bg-secondary-dark text-teal-400 text-sm absolute -top-3 left-16 px-2"
     >
@@ -61,4 +65,3 @@
     </a>
   </div>
 </div>
-

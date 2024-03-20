@@ -28,13 +28,17 @@
           <app-repository [repository]="repo" />
         }
       </div>
-      <div class="my-8 flex items-center justify-center">
+      <div class="my-8 flex items-center justify-center flex-col">
         <button
           (click)="filteredRepos.length === repos.length?
             backToTop() : loadMoreRepos()"
           class="ghost-btn px-8 py-3 rounded-sm">
           {{filteredRepos.length === repos.length? 'Voltar para o topo' : 'Carregar mais repositórios' }}
         </button>
+        <div class="text-center pt-8 flex items-center justify-center gap-2">
+          <span class="flex items-center justify-center size-4 ring-1 ring-white rounded-full text-sm">?</span>
+          <small class="block">Para voltar para a página do perfil, clique no nome de usuário no topo da página.</small>
+        </div>
       </div>
     </div>
   }
