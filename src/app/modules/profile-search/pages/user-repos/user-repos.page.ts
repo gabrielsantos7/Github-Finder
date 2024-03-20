@@ -72,19 +72,17 @@ export class UserReposPage {
   }
 
   filterRepos() {
+    this.filteredRepos = this.repos
+      .sort((a, b) => {
+        return b.stargazers_count - a.stargazers_count;
+      })
     if (this.repoName) {
       this.filteredRepos = this.repos
-        .sort((a, b) => {
-          return b.stargazers_count - a.stargazers_count;
-        })
         .filter((repo) =>
           repo.name.toLowerCase().includes(this.repoName.toLowerCase())
         );
     } else {
       this.filteredRepos = this.repos
-        .sort((a, b) => {
-          return b.stargazers_count - a.stargazers_count;
-        })
         .slice(0, this.numberOfRepos);
     }
   }
