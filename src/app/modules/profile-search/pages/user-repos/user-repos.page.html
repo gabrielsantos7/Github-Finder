@@ -1,19 +1,28 @@
-<div class="min-h-screen bg-primary-dark flex items-center justify-center">
+<div class="min-h-screen bg-primary-dark">
   @if(isLoading) {
-  <app-loader />
+    <div class="h-screen flex items-center justify-center">
+      <app-loader />
+    </div>
   } @else if(errorTitle === 'Usuário não encontrado') {
-  <app-error [errorTitle]="errorTitle">
-    <p class="text-lg">
-      Não conseguimos encontrar nenhum usuário com o nome
-      <span class="text-slate-400 font-semibold">{{username}}</span>
-      .
-    </p>
-    <p class="pb-8 text-lg">
-      Verifique se o nome que você forneceu está correto e tente novamente.
-    </p>
-  </app-error>
+    <div class="h-screen flex items-center justify-center">
+      <app-error [errorTitle]="errorTitle">
+        <p class="text-lg">
+          Não conseguimos encontrar nenhum usuário com o nome
+          <span class="text-slate-400 font-semibold">{{username}}</span>
+          .
+        </p>
+        <p class="pb-8 text-lg">
+          Verifique se o nome que você forneceu está correto e tente novamente.
+        </p>
+      </app-error>
+    </div>
   } @else if(errorTitle) {
-  <app-error [errorTitle]="errorTitle" [description]="errorDescription" />
+    <div class="h-screen flex items-center justify-center">
+      <app-error
+        [errorTitle]="errorTitle"
+        [description]="errorDescription"
+      />
+    </div>
   } @else {
   <div class="container w-full rounded-lg p-4">
     <div class="flex items-center justify-between flex-col md:flex-row py-8">
@@ -35,7 +44,7 @@
           [(ngModel)]="repoName"
           (ngModelChange)="filterRepos()"
           type="search"
-          class="bg-transparent w-72 outline-none peer"
+          class="bg-transparent w-72 outline-none"
           name="userName"
           id="userName"
           placeholder="Pesquisar repositório..."
@@ -50,16 +59,15 @@
       @for(repo of filteredRepos; track repo.name) {
       <app-repository [repository]="repo" />
       } @empty {
-      <div class="container p-8 md:p-48">
+      <div class="pt-4 md:p-48">
         <h2 class="text-teal-500 text-2xl font-bold mb-4 text-center">
           Nenhum repositório encontrado
         </h2>
-        <p class="md:text-center">
+        <p class="text-center">
           Não conseguimos encontrar nenhum repositório com o nome
-          <span class="text-slate-400 font-bold">{{repoName}}</span>
-          .
+          <span class="text-slate-400 font-bold">{{repoName}}</span>.
         </p>
-        <p class="md:text-center">
+        <p class="text-center">
           Por favor, verifique se o nome do repositório está correto ou tente
           outra busca.
         </p>
