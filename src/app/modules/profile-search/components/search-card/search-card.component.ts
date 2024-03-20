@@ -23,4 +23,8 @@ export class SearchCardComponent {
       this.errorMsg = 'Informe um nome de usuário válido.'
     }
   }
+
+  clearErrorMsg() {
+    this.errorMsg = '';
+  }
 }
