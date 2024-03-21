@@ -1,27 +1,41 @@
-# GithubFinder
+# 🔍 GitHub Finder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Bem-vindo ao GitHub Finder, um aplicativo desenvolvido com Angular e Tailwind CSS que permite explorar perfis e repositórios no GitHub de forma rápida e fácil. Acesso ao Site: [GitHub Finder](https://github-finder-gabriel.netlify.app/ "Visitar site")
 
-## Development server
+## 🛠️ Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- 🔎 Busca de Perfil: Busque perfis de usuários do GitHub pelo nome de usuário.
+- 📋 Listagem de Repositórios: Visualize uma lista dos repositórios de um
+  usuário do GitHub.
+- 🔍 Pesquisa de Repositórios: Pesquise os repositórios de um usuário por nome.
+- 🎨 Interface Amigável: Interface moderna e amigável, desenvolvida com Angular e estilizada com Tailwind CSS.
 
-## Code scaffolding
+## ⚙️ Tutorial de Instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone o repositório do GitHub Finder:
 
-## Build
+   ```bash
+   git clone https://github.com/gabrielsantos7/Github-Finder.git
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Navegue até o diretório do projeto:
 
-## Running unit tests
+   ```bash
+   cd Github-Finder
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Instale as dependências do projeto:
 
-## Running end-to-end tests
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Inicie o servidor de desenvolvimento:
 
-## Further help
+   ```bash
+   ng serve
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+5. Abra seu navegador e acesse o endereço: `http://localhost:4200`
+
+🎉 Divirta-se explorando o GitHub com o GitHub Finder! Se você tiver alguma dúvida ou encontrar algum problema, sinta-se à vontade para abrir uma issue no GitHub ou entrar em contato diretamente.
