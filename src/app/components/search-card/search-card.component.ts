@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { GithubProfileService } from '../../../../core/services/github-profile.service';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 

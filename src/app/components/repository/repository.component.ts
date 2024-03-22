@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { GithubRepository } from '../../../../core/models/github-repository.model';
-import { RepoStatsComponent } from '../repo-stats/repo-stats.component'
+import { GithubRepository } from '@models/github-repository.model';
+import { RepoStatsComponent } from '@components/shared/repo-stats/repo-stats.component';
 
 @Component({
   selector: 'app-repository',

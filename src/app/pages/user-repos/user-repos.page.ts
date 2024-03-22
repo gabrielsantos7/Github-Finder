@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { GithubProfileService } from '../../../../core/services/github-profile.service';
-import { GithubRepository } from '../../../../core/models/github-repository.model';
-import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
-import { ErrorComponent } from '../../../../shared/components/error/error.component';
-import { RepositoryComponent } from '../../components/repository/repository.component';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+
+import { GithubProfileService } from '@services/github-profile.service';
+import { GithubRepository } from '@models/github-repository.model';
+
+import { RepositoryComponent } from '@components/repository/repository.component';
+import { LoaderComponent } from '@components/shared/loader/loader.component';
+import { ErrorComponent } from '@components/shared/error/error.component';
 
 @Component({
   selector: 'app-user-repos',

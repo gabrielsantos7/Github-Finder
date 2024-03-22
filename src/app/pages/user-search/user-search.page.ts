@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SearchCardComponent } from '../../components/search-card/search-card.component';
+
+import { SearchCardComponent } from '@components/search-card/search-card.component';
 
 @Component({
   selector: 'app-user-search',

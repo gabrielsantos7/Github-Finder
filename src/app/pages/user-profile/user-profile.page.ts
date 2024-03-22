@@ -1,10 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { ResultCardComponent } from '../../components/result-card/result-card.component';
 import { ActivatedRoute } from '@angular/router';
-import { GithubProfileService } from '../../../../core/services/github-profile.service';
-import { GithubProfile } from '../../../../core/models/github-profile.model';
-import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
-import { ErrorComponent } from '../../../../shared/components/error/error.component';
+
+import { GithubProfileService } from '@services/github-profile.service';
+import { GithubProfile } from '@models/github-profile.model';
+
+import { ResultCardComponent } from '@components/result-card/result-card.component';
+import { LoaderComponent } from '@components/shared/loader/loader.component';
+import { ErrorComponent } from '@components/shared/error/error.component';
 
 @Component({
   selector: 'app-user-profile',

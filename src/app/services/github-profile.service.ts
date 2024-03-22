@@ -3,7 +3,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { GithubProfile } from '../models/github-profile.model';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { GithubRepository } from '../models/github-repository.model';
 
 @Injectable({
