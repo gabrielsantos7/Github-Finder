@@ -1,6 +1,6 @@
 # 🔍 GitHub Finder
 
-Bem-vindo ao GitHub Finder, um aplicativo desenvolvido com Angular e Tailwind CSS que permite explorar perfis e repositórios no GitHub de forma rápida e fácil. Acesso ao Site: [GitHub Finder](https://github-finder-gabriel.netlify.app/ "Visitar site")
+Bem-vindo ao GitHub Finder, um aplicativo desenvolvido com Angular e Tailwind CSS que permite explorar perfis e repositórios no GitHub de forma rápida e fácil. Acesso ao Site: [GitHub Finder](https://github-finder-net.netlify.app/ "Visitar site")
 
 ## 🛠️ Funcionalidades
 
